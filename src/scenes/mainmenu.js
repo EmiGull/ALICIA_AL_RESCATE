@@ -1,3 +1,5 @@
+import Button from "../js/button.js";
+
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class MainMenu extends Phaser.Scene {
   constructor() {
@@ -11,15 +13,20 @@ export class MainMenu extends Phaser.Scene {
       .image(
         this.cameras.main.centerX,
         this.cameras.main.centerY,
-        "mainmenu_bg"
+        "fondonegro.jpg"
       )
       .setScale(1.1);
 
-    // Logo de Phaser
-    this.add.image(
-      this.cameras.main.centerX,
-      this.cameras.main.centerY / 1.5,
-      "phaser_logo"
-    );
+    // Boton para comenzar a jugar
+    const boton = new Button(
+      this.cameras.main.centerX, 
+      this.cameras.main.centerY + this.cameras.main.centerY/3, 
+      'Mapa', 
+      this, 
+      () => {
+      // Instrucción para pasar a la escena Mapa
+        this.scene.start("Map");
+    });
   }
+
 }
