@@ -11,13 +11,8 @@ export class Map extends Phaser.Scene {
   
     create() {
       // Fondo del menú principal
-      this.add
-        .image(
-          this.cameras.main.centerX,
-          this.cameras.main.centerY,
-          "fondonegro.jpg"
-        )
-        .setScale(1.1);
+      this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "mapa").setScale(1.1);
+
 
       
       // Boton para comenzar a jugar nivel 1

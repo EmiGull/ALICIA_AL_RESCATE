@@ -11,7 +11,12 @@ export class Preloads extends Phaser.Scene {
 
   preload() {
     
-    this.load.image("public/assets/images/fondonegro.jpg");
+    this.load.image("menu","public/assets/images/menu.jpg");
+    this.load.image("jugar", "public/assets/images/jugar.png");
+    this.load.image("carta1", "public/assets/images/carta1.png");
+    this.load.image("carta2", "public/assets/images/carta2.jpg");
+    this.load.image("mapa", "public/assets/images/mapa.png");
+    this.load.video("gif", "public/assets/images/gif.gif");
   }
 
   create() {

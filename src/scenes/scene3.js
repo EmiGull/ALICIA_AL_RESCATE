@@ -5,6 +5,7 @@
  var tarjeta2 = null;
  var primerResultado = null;
  var segundoResultado = null;
+ var corazones = 0;
 
 import Button from "../js/button.js";
 
