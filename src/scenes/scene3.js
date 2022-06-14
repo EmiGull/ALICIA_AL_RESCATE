@@ -1,4 +1,11 @@
 
+ //inicializacion de variables
+ var tarjetasdestapadas = 0;
+ var tarjeta1 = null;
+ var tarjeta2 = null;
+ var primerResultado = null;
+ var segundoResultado = null;
+
 import Button from "../js/button.js";
 
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
@@ -8,6 +15,8 @@ export class Scene3 extends Phaser.Scene {
       super("scene3");
     }
   
+   
+
     create() {
       // Fondo del nivel 3
       this.add
@@ -17,6 +26,37 @@ export class Scene3 extends Phaser.Scene {
           "fondonegro.jpg"
         )
         .setScale(1.1);
+
+      //Aleatoreidad de las cartas
+      let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12]
+      numeros = numeros.sort( () => {return Math.random() - 0.5 });
+
+      //Funcion principal
+      function destapar(id){
+        tarjetasdestapadas= 1;
+
+        if (tarjetasdestapadas == 1){
+          //mostrar primer tarjeta
+          tarjeta1 = document.getElementById(id);
+          primerResultado = numeros[id];
+          tarjeta1.innerHTML = primerResultado;
+
+          //desabilitar primer boton
+          tarjeta1.disabled = true;
+
+        }else if (tarjetasdestapadas == 2){
+        //mostrar segunda tarjeta
+        tarjeta2 = document.getElementById(id);
+        segundoResultado = numeros (id);
+        tarjeta2.innerHTML = segundoResultado;
+
+        //deshabilitar segundo boton
+        tarjeta2.disabled = true;
+
+        }
+       
+
+      }
   
      
          // Boton para ir al mapa
