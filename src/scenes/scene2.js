@@ -17,67 +17,106 @@ export class Scene2 extends Phaser.Scene {
   
     create() {
       // Fondo del nivel 2
-      this.add
-        .image(
-          this.cameras.main.centerX,
-          this.cameras.main.centerY,
-          "fondonegro.jpg"
-        )
-        .setScale(1.1);
+      this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"fondonivel1").setScale(1.1);
+      //this.add.immage(50,200, 'puntos');
+      //this.add.image(300,200, 'temporizador');
+      //this.add.image(600,200,'siguiente');
+
   
-        let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
-        numeros = numeros.sort( () => {return Math.random() - 0.5 });
-
-           //Funcion principal
-      function destapar(id){
-        tarjetasdestapadas= 1;
-
-        if (tarjetasdestapadas == 1){
-          //mostrar primer tarjeta
-          tarjeta1 = document.getElementById(id);
-          primerResultado = numeros[id];
-          tarjeta1.innerHTML = primerResultado;
-
-          //desabilitar primer boton
-          tarjeta1.disabled = true;
-
-        }else if (tarjetasdestapadas == 2){
-        //mostrar segunda tarjeta
-        tarjeta2 = document.getElementById(id);
-        segundoResultado = numeros (id);
-        tarjeta2.innerHTML = segundoResultado;
-
-        //deshabilitar segundo boton
-        tarjeta2.disabled = true;
-
-        }
-
-      }
-    
-         // Boton para ir al mapa
-    const boton = new Button(
-        this.cameras.main.centerX, 
-        this.cameras.main.centerY + this.cameras.main.centerY/3, 
-        'Mapa', 
-        this, 
-        () => {
-        // Instrucción para pasar a la escena Mapa
-          this.scene.start("Map");
-      });
+        //this.add.image(50, 100, "carta1").setScale(1);
+        //this.add.image(200, 500, "carta2").setScale(1);
+        
+      // Boton para comenzar a jugar nivel 1
+      const boton = new Button(
+          200, 100, 'Mapa', 
+          this, 
+          () => {
+          // Instrucción para pasar a la escena mapa
+            this.scene.start("Map");
+        });
+  
+      
+      let numeros16 = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
+      numeros16 = numeros16.sort( () => (Math.random() > .5) ? 1 : -1 );
+      console.log (numeros16);
+      let coordenadas16 = [[115,415],[275,415],[435,415],[595,415],[115,695],[275,695],[435,695],[595,695],
+      [115,975],[275,975],[435,975],[595,975],[115,1255],[275,1255],[435,1255],[595,1255],]
+  
      
+      let tipo
+      numeros16.forEach((element,index) => {
+        console.log("Tipo", element)
+        console.log("posicion", coordenadas16[index][0], coordenadas16[index][1])
+  
+       /* switch ((element == 1) ) {
+          case 'conejo':
+            break;
+            case 'flor':
+              break;
+            case 'girasol':
+              break;
+            case 'llave':
+              break;
+            case 'pocion':
+            break;
+            case 'rosa':
+            break;
+            case 'sombrero':
+            break;
+            case 'torta':
+            break;
+        } 
+        */
 
+      if (element == 1) {
+          tipo = "corazon"
+        }
+      else {
+          tipo = "flor"
+        }
+      
+      if (element == 1) {
+          tipo = "sombrero"
+        }
+      else{
+          tipo = "torta"
+        }
+      
+      if (element == 1) {
+          tipo = "pocion"
+        }
+      else{
+          tipo = "rosa"
+        }
+        
+      if (element == 1) {
+          tipo = "girasol"
+        }
+      else{
+          tipo = "llave"
+        }
+      
+  
+        let imagen = this.add.image(coordenadas16[index][0], coordenadas16[index][1], tipo).setInteractive();
+        
+        //prueba del click
+        imagen.on('pointerdown', function (pointer) {
+          this.setTint(0xff0000);
+          //guardar algo que me permita definir quien/quienes estan dadas vueltas
+          //si es una , no hace nada
+          //si son 2 las compara
+            //sin son iguales suma
+            //si son distintas las da vuelta
+        });
+      });
+      
       // Boton para comenzar volver al menu principal
       const botonmenu = new Button(
-        this.cameras.main.centerX, 
-        this.cameras.main.centerY + this.cameras.main.centerY/100, 
-        'Menu', 
+        600, 100, 'Siguiente', 
         this, 
         () => {
         // Instrucción para pasar al menu principal
           this.scene.start("mainmenu");
       });
-
-      
-    }
   }
-  
+}

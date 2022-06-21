@@ -9,24 +9,16 @@ export class GameOver extends Phaser.Scene {
   
     create() {
       // Fondo del menú principal
-      this.add
-        .image(
-          this.cameras.main.centerX,
-          this.cameras.main.centerY,
-          "fondonegro.jpg"
-        )
-        .setScale(1.1);
+      this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"ganaste1").setScale(1.1);
   
 
       // Boton para volver a Menu principal
     const boton = new Button(
-        this.cameras.main.centerX, 
-        this.cameras.main.centerY + this.cameras.main.centerY/3, 
-        'Mapa de niveles', 
+      600, 100, 'Siguiente', 
         this, 
         () => {
         // Instrucción para pasar a la escena Menu principal
-          this.scene.start("MainMenu");
+          this.scene.start("mainmenu");
       });
 
       
