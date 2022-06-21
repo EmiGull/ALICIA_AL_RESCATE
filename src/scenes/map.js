@@ -16,33 +16,21 @@ export class Map extends Phaser.Scene {
 
       
       // Boton para comenzar a jugar nivel 1
-    const botonN1 = new Button(
-        350,600, 'Nivel 1', 
-        this, 
-        () => {
-        // Instrucción para pasar a la escena 1
-          this.scene.start("scene1");
-      });
+      var nivel1 = this.add.image(350, 600, 'siguiente').setScale(0.26)
+      nivel1.setInteractive()
+      nivel1.on('pointerdown', () => this.scene.start('Scene1') );
+
 
     // Boton para comenzar a jugar nivel 2
-    const botonN2 = new Button(
-        350, 1250, 'Nivel 2', 
-        this, 
-        () => {
-        // Instrucción para pasar a la escena 2
-          this.scene.start("scene2");
-      });
+    var nivel2 = this.add.image(350, 1250, 'siguiente').setScale(0.26)
+    nivel2.setInteractive()
+    nivel2.on('pointerdown', () => this.scene.start('Scene2') );
 
-       // Boton para comenzar volver al menu principal
-    const botonmenu = new Button(
-        //this.add.image(575, 1200, "siguiente").setScale(1),
-        600, 1400,'Siguiente', 
-        this, 
-        () => {
-        // Instrucción para pasar al menu principal
-          this.scene.start("mainmenu");
-      });
-      
+
+       // Boton para volver al menu principal
+   var menu = this.add.image(600,1400, 'siguiente').setScale(0.26)
+    menu.setInteractive()
+    menu.on('pointerdown', () => this.scene.start('MainMenu') );
 
     }
   }

@@ -25,17 +25,7 @@ export class Scene1 extends Phaser.Scene {
     // Fondo del nivel 1
     this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"fondonivel1").setScale(1.1);
 
-      
-    // Boton para comenzar a jugar nivel 1
-    const boton = new Button(
-        200, 100,'Mapa', 
-        this, 
-        () => {
-        // Instrucción para pasar a la escena mapa
-          this.scene.start("Map");
-      });
-
-
+  
     let numeros4 = [1,1,2,2]
     numeros4 = numeros4.sort( () => (Math.random() > .5) ? 1 : -1 );
     console.log (numeros4);
@@ -155,18 +145,10 @@ export class Scene1 extends Phaser.Scene {
          
     
 
-    // Boton para comenzar volver al menu principal
-    const botonmenu = new Button(
-      600, 100, 'Siguiente',  
-      this, 
-      () => {
-      // Instrucción para pasar al menu principal
-        this.scene.start("mainmenu");
-    });
-
-    //var botonmenu = this.add.image(400, 300, 'siguiente').setScale(0.26)
-    //botonmenu.setInteractive()
-    //botonmenu.on('pointerdown', () => this.scene.start('mainmenu') );
+        // Boton para volver al menu principal
+   var menu = this.add.image(600,100, 'siguiente').setScale(0.26)
+   menu.setInteractive()
+   menu.on('pointerdown', () => this.scene.start('MainMenu') );
 
   }
 }

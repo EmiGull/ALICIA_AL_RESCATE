@@ -21,20 +21,7 @@ export class Scene2 extends Phaser.Scene {
       //this.add.immage(50,200, 'puntos');
       //this.add.image(300,200, 'temporizador');
       //this.add.image(600,200,'siguiente');
-
-  
-        //this.add.image(50, 100, "carta1").setScale(1);
-        //this.add.image(200, 500, "carta2").setScale(1);
-        
-      // Boton para comenzar a jugar nivel 1
-      const boton = new Button(
-          200, 100, 'Mapa', 
-          this, 
-          () => {
-          // Instrucción para pasar a la escena mapa
-            this.scene.start("Map");
-        });
-  
+      
       
       let numeros16 = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]
       numeros16 = numeros16.sort( () => (Math.random() > .5) ? 1 : -1 );
@@ -71,7 +58,7 @@ export class Scene2 extends Phaser.Scene {
       if (element == 1) {
           tipo = "corazon"
         }
-      else {
+      else{
           tipo = "flor"
         }
       
@@ -110,13 +97,10 @@ export class Scene2 extends Phaser.Scene {
         });
       });
       
-      // Boton para comenzar volver al menu principal
-      const botonmenu = new Button(
-        600, 100, 'Siguiente', 
-        this, 
-        () => {
-        // Instrucción para pasar al menu principal
-          this.scene.start("mainmenu");
-      });
+    // Boton para volver al menu principal
+    var menu = this.add.image(600,100, 'siguiente').setScale(0.26)
+    menu.setInteractive()
+    menu.on('pointerdown', () => this.scene.start('MainMenu') );
+
   }
 }

@@ -21,13 +21,11 @@ export class MainMenu extends Phaser.Scene {
   
  
     // Boton para comenzar a jugar
-   const boton = new Button( 
-      360,1200, 'Jugar', 
-      this, 
-      () => {
-      // Instrucción para pasar a la escena Mapa
-        this.scene.start("Map");
-    });
+
+    var jugar = this.add.image(360, 1300, 'jugar').setScale(0.26)
+    jugar.setInteractive()
+    jugar.on('pointerdown', () => this.scene.start('Map') );
+
   }
 
 }
