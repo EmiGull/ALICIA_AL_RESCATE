@@ -34,6 +34,8 @@ export class Preloads extends Phaser.Scene {
     this.load.image("ganaste2", "public/assets/images/ganaste2.png");
     this.load.image("ganaste3", "public/assets/images/ganaste3.png");
     this.load.image("ganaste4", "public/assets/images/ganaste4.png");
+    //this.load.audio('alicia_al_rescate','assets/sounds/alicia_al_rescate.mp3');
+
     
   }
 

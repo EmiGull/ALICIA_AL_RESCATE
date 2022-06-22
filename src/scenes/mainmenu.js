@@ -26,6 +26,13 @@ export class MainMenu extends Phaser.Scene {
     jugar.setInteractive()
     jugar.on('pointerdown', () => this.scene.start('Map') );
 
+   /* var musica = this.sound.add('alicia_al_rescate');
+
+        musica.play({
+            loop: true
+        });
+        */
+
   }
 
 }

@@ -14,8 +14,8 @@ var config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: {
-      width: 720,
-      height: 1500,
+      width: 300,
+      height: 625,
     },
     max: {
       width: 720,
