@@ -3,7 +3,6 @@ let tarjeta1 = null;
 let tarjeta2 = null;
 let gameover = false;
 let corazones = 0;
-let tiempo = false;
 let tarjetasDestapadas = 0;
 
 
@@ -27,6 +26,10 @@ export class Scene2 extends Phaser.Scene {
       menu.setInteractive();
       menu.on("pointerdown", () => this.scene.start("MainMenu"));
 
+    // Si no junta todas las cartas en 20 segundos --> Game Over
+    this.initialTime = 20
+    this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onSecond, callbackScope: this, loop: true });
+    this.timeText = this.add.text(315, 60, '00:20', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000'  });
     
     let numeros16 = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
     numeros16 = numeros16.sort(() => (Math.random() > 0.5 ? 1 : -1));
@@ -116,54 +119,30 @@ export class Scene2 extends Phaser.Scene {
       };
     });
   })
-       // Si no junta todas las cartas en 40 segundos --> Game Over
-      this.initialTime = 40
-      //timedEvent = this.time.delayedCall(1000, this.onSecond, [], this, true);
-      this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onSecond, callbackScope: this, loop: true });
-      this.timeText = this.add.text(500, 16, '', { fontSize: '32px', fill: '#000' });
-      this.jumps = 0;
-
-
-      //contar cantidad de tarjetas destapadas (para saber si son mas de 3 sin unir se pierde el juego)
-      let movimientos
-      if (movimientos => 3){
-      gameover = true;
-      }
-
 }
 
 
-  update (){
-    if (gameover)
-    {       
-        return
-    }
-  
-    gameover();{        
-      gameover = true;
-      this.physics.pause();
-  
-      player.setTint(0xff0000);
-  
-      player.anims.play('turn');        
-  
-      var gameOverButton = this.add.text(700, 500, 'Perdiste', { fontFamily: 'Arial', fontSize: 70, color: '#ff0000' })
-      gameOverButton.setInteractive()
-      gameOverButton.on('pointerdown', () => this.scene.start('creditos'));
-      Phaser.Display.Align.In.Center(gameOverButton, this.add.zone(400, 300, 800, 600));    
+update (){
+  if (gameover)
+  {       
+      return
   }
-  
-  onSecond();{
-    if (! gameover)
-    {       
-        this.initialTime = this.initialTime - 1; // One second
-        this.timeText.setText('Countdown: ' + this.initialTime);
-        if (this.initialTime == 0) {
-            this.timedEvent.paused = true;
-            this.gameover()
-        }            
-    }
+}
+
+gameover(){   
+  this.scene.start('GameOver')
+}
+
+onSecond(){
+  if (! gameover)
+  {       
+      this.initialTime = this.initialTime - 1; // One second
+      this.timeText.setText(this.initialTime);
+      if (this.initialTime == 0) {
+          this.timedEvent.paused = true;
+          this.gameover()
+      }            
   }
-  }
+}
   }
 

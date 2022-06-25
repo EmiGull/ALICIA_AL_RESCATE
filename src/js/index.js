@@ -3,6 +3,7 @@ import { MainMenu } from "../scenes/mainmenu.js";
 import { Map} from "../scenes/map.js";
 import { Scene1 } from "../scenes/scene1.js";
 import { Scene2 } from "../scenes/scene2.js";
+import { Winner } from "../scenes/winner.js";
 import { GameOver } from "../scenes/gameover.js";
 
 
@@ -31,7 +32,7 @@ var config = {
   },
   // Listado de todas las escenas del juego, en orden
   // La primera escena es con la cual empieza el juego
-  scene: [Preloads, MainMenu, Map, Scene1, Scene2, GameOver],
+  scene: [Preloads, MainMenu, Map, Scene1, Scene2, Winner, GameOver],
 };
 
 var game = new Phaser.Game(config);

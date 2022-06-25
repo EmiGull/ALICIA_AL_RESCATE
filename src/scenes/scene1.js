@@ -1,13 +1,10 @@
  //inicializacion de variables
  let tarjeta1 = null;
  let tarjeta2 = null;
-
  let gameover = false;
- 
+ let winner = false;
+
  let corazones = 0;
- 
- let tiempo = false;
- 
 let tarjetasDestapadas = 0;
 
 
@@ -28,17 +25,18 @@ export class Scene1 extends Phaser.Scene {
     this.add.image(this.cameras.main.centerX,this.cameras.main.centerY,"fondonivel1").setScale(1.1);
     this.add.image(400,100,'temporizador');
     this.add.image(120,100, 'puntos');
-    var puntos= this.add.text(130, 60, '0', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' })
+    var puntos= this.add.text(130, 60, '0', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000'})
     
      // Boton para volver al menu principal
     var menu = this.add.image(600,100, 'siguiente').setScale(0.26)
     menu.setInteractive()
     menu.on('pointerdown', () => this.scene.start('MainMenu') );
     
-    // Si no junta todas las cartas en 20 segundos --> Game Over
-    this.initialTime = 20
+    // Si no junta todas las cartas en 10 segundos --> Game Over
+    this.initialTime = 10
     this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onSecond, callbackScope: this, loop: true });
-    this.timeText = this.add.text(225, 60, '20', { fontSize: '32px', fill: '#000' });
+    this.timeText = this.add.text(315, 60, '00:10', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000'});
+    console.log (this.timedEvent)
     
     let numeros4 = [1,1,2,2]
     numeros4 = numeros4.sort( () => (Math.random() > .5) ? 1 : -1 );
@@ -57,7 +55,7 @@ export class Scene1 extends Phaser.Scene {
         tipo = "flor_grande"
       }
 
-      let imagen = this.add.image(coordenadas4[index][0], coordenadas4[index][1], "reverso").setInteractive();
+      let imagen = this.add.image(coordenadas4[index][0], coordenadas4[index][1], "reverso1").setInteractive();
       imagen.tipo = tipo
       
         //prueba del click
@@ -82,49 +80,46 @@ export class Scene1 extends Phaser.Scene {
               },1000)
             }else{
             setTimeout(()=>{
-              tarjeta1.setTexture ('reverso');
-              tarjeta2.setTexture ('reverso');
+              tarjeta1.setTexture ('reverso1');
+              tarjeta2.setTexture ('reverso1');
               tarjetasDestapadas = 0;
             },1000)
             }
-            
           }
+          if (tarjetasDestapadas == 4){
+            this.Winner()     
+         }
         });
       });
-
-         
-        
-        
-       
-        //contar cantidad de tarjetas destapadas (para saber si son mas de 3 sin unir se pierde el juego)
-        let movimientos
-        if (movimientos => 3){
-          //gameover = true;
-        }
-
-
-
 }
 
   update (){
+   
+    
     if (gameover)
     {       
         return
     }
   }
-
-  gameover(){   
+  
+  Winner(){   
+    this.scene.start('Winner')
+  }
+  
+  GameOver(){   
     this.scene.start('GameOver')
   }
 
+
   onSecond(){
+   
     if (! gameover)
     {       
         this.initialTime = this.initialTime - 1; // One second
         this.timeText.setText(this.initialTime);
         if (this.initialTime == 0) {
             this.timedEvent.paused = true;
-            this.gameover()
+            this.GameOver()
         }            
     }
   }
