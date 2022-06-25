@@ -89,6 +89,11 @@ export class Scene1 extends Phaser.Scene {
             }, 500)
           }
         }
+
+        //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
+        if (tarjetasDestapadas == 4){
+          this.scene.start ('Winner');
+        }
         }
       );
     });
