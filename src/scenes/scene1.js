@@ -6,6 +6,7 @@ let winner = false;
 let endGame = false;
 let corazones = 0;
 let tarjetasDestapadas = 0;
+let coincidencias = 0;
 
 
 
@@ -62,6 +63,7 @@ export class Scene1 extends Phaser.Scene {
       imagen.tipo = tipo
 
       //prueba del click
+      const scene = this;
       imagen.on('pointerdown', function (pointer) {
         console.log(this.tipo);
         tarjetasDestapadas++
@@ -78,6 +80,7 @@ export class Scene1 extends Phaser.Scene {
           if (tarjeta1.tipo == tarjeta2.tipo) {
             corazones += 1;
             puntos.setText(corazones);
+            coincidencias++;
             setTimeout(() => {
               tarjetasDestapadas = 0;
             }, 500)
@@ -91,8 +94,8 @@ export class Scene1 extends Phaser.Scene {
         }
 
         //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
-        if (tarjetasDestapadas == 4){
-          this.scene.start ('Winner');
+        if (coincidencias === 2){
+          scene.win();
         }
         }
       );
@@ -107,6 +110,10 @@ export class Scene1 extends Phaser.Scene {
 
   gameover() {
     this.scene.start('GameOver')
+  }
+  
+  win(){
+    this.scene.start('Winner');
   }
 
   onSecond() {
