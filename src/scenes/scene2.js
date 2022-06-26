@@ -4,7 +4,7 @@ let tarjeta2 = null;
 let gameover = false;
 let corazones = 0;
 let tarjetasDestapadas = 0;
-let musica;
+let coincidencias = 0;
 
 
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
@@ -17,15 +17,19 @@ export class Scene2 extends Phaser.Scene {
 
   create() {
     // Fondo del nivel 2
-    this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "fondonivel1").setScale(1.1);
+    this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "fondonivel2").setScale(1.1);
     this.add.image(400, 100, 'temporizador');
     this.add.image(120, 100, 'puntos');
     var puntos = this.add.text(130, 60, '0', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' })
 
+     //clic
+     this.clic = this.sound.add('clic');
+    
     // Boton para volver al menu principal
-    var menu = this.add.image(600, 100, "siguiente").setScale(0.26);
+    var menu = this.add.image(600, 100, "boton_menu").setScale(1.1);
     menu.setInteractive();
     menu.on("pointerdown", () => this.scene.start("MainMenu"));
+    this.clic.play();
 
     // Si no junta todas las cartas en 20 segundos --> Game Over
     this.initialTime = 40
@@ -108,6 +112,7 @@ export class Scene2 extends Phaser.Scene {
           if (tarjeta1.tipo == tarjeta2.tipo) {
             corazones += 1;
             puntos.setText(corazones);
+            coincidencias++;
             setTimeout(() => {
               tarjetasDestapadas = 0;
             }, 500)
@@ -118,8 +123,13 @@ export class Scene2 extends Phaser.Scene {
               tarjetasDestapadas = 0;
             }, 500)
           }
-
         };
+
+        //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
+        if (coincidencias === 8){
+          this.scene.Winner ();
+        }
+
       });
     })
   }
@@ -134,6 +144,11 @@ export class Scene2 extends Phaser.Scene {
   gameover() {
     this.scene.start('GameOver')
   }
+
+  winner(){
+    this.scene.start('Winner');
+  }
+
 
   onSecond() {
     if (!gameover) {

@@ -3,9 +3,9 @@ let tarjeta1 = null;
 let tarjeta2 = null;
 let gameover = false;
 let winner = false;
-let endGame = false;
 let corazones = 0;
 let tarjetasDestapadas = 0;
+let coincidencias = 0;
 
 
 
@@ -16,8 +16,6 @@ export class Scene1 extends Phaser.Scene {
   constructor() {
     // Se asigna una key para despues poder llamar a la escena
     super("scene1");
-
-
   }
 
   create() {
@@ -28,10 +26,14 @@ export class Scene1 extends Phaser.Scene {
     this.add.image(120, 100, 'puntos');
     var puntos = this.add.text(130, 60, '0', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' })
 
+    //sonidos
+    this.clic = this.sound.add('clic');
+    
     // Boton para volver al menu principal
-    var menu = this.add.image(600, 100, 'siguiente').setScale(0.26)
+    var menu = this.add.image(600, 100, 'boton_menu').setScale(1.1)
     menu.setInteractive()
     menu.on('pointerdown', () => this.scene.start('MainMenu'));
+    this.clic.play();
 
     // Si no junta todas las cartas en 10 segundos --> Game Over
     this.initialTime = 10
@@ -78,6 +80,7 @@ export class Scene1 extends Phaser.Scene {
           if (tarjeta1.tipo == tarjeta2.tipo) {
             corazones += 1;
             puntos.setText(corazones);
+            coincidencias++;
             setTimeout(() => {
               tarjetasDestapadas = 0;
             }, 500)
@@ -91,13 +94,16 @@ export class Scene1 extends Phaser.Scene {
         }
 
         //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
-        if (tarjetasDestapadas == 4){
-          this.scene.start ('Winner');
+        if (coincidencias ===2){
+          this.scene.Winner ();
         }
-        }
-      );
+
+        //if (tarjetasDestapadas == 4){
+         // this.scene.start ('Winner');}});
+
     });
-  };
+  })
+  }
 
   update() {
     if (gameover) {
@@ -105,11 +111,15 @@ export class Scene1 extends Phaser.Scene {
     }
   }
 
-  gameover() {
-    this.scene.start('GameOver')
+  gameover(){
+    this.scene.start('GameOver');
   }
 
-  onSecond() {
+  winner(){
+    this.scene.start('Winner');
+  }
+
+  onSecond(){
     if (!gameover) {
       this.initialTime = this.initialTime - 1; // One second
       this.timeText.setText(this.initialTime);

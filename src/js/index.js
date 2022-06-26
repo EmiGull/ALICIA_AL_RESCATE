@@ -1,6 +1,6 @@
 import { Preloads } from "../scenes/preloads.js";
 import { MainMenu } from "../scenes/mainmenu.js";
-import { Map} from "../scenes/map.js";
+import { Map } from "../scenes/map.js";
 import { Scene1 } from "../scenes/scene1.js";
 import { Scene2 } from "../scenes/scene2.js";
 import { Winner } from "../scenes/winner.js";

@@ -14,8 +14,11 @@ export class Preloads extends Phaser.Scene {
     this.load.image("menu","public/assets/images/menu.png");
     this.load.image("jugar", "public/assets/images/jugar.png", 120, 40);
     this.load.image("mapa", "public/assets/images/mapa.png");
+    this.load.image("boton_menu", "public/assets/images/boton_menu.png");
     this.load.image("siguiente", "public/assets/images/siguiente.png");
+    this.load.image("atras", "public/assets/images/atras.png");
     this.load.image("fondonivel1", "public/assets/images/fondonivel1.png");
+    this.load.image("fondonivel2", "public/assets/images/fondonivel2.png");
     this.load.image("pausa", "public/assets/images/pausa.png");
     this.load.image("puntos", "public/assets/images/puntos.png");
     this.load.image("temporizador", "public/assets/images/temporizador.png");
@@ -31,10 +34,13 @@ export class Preloads extends Phaser.Scene {
     this.load.image("rosa", "public/assets/images/rosa.png");
     this.load.image("sombrero", "public/assets/images/sombrero.png");
     this.load.image("torta", "public/assets/images/torta.png");
-    this.load.image("ganaste1", "public/assets/images/ganaste1.png");
+    this.load.image("ganaste", "public/assets/images/ganaste.png");
     this.load.image("perdiste", "public/assets/images/perdiste.png");
     this.load.audio('alicia_al_rescate','public/assets/sounds/alicia_al_rescate.mp3', 
     'public/assets/sounds/alicia_al_rescate.ogg', 'public/assets/sounds/alicia_al_rescate.m4a');
+    this.load.audio ('win', 'public/assets/sounds/win.mp3');
+    this.load.audio ('clic', 'public/assets/sounds/clic.wav');
+    this.load.audio ('vuelta_carta', 'public/assets/sounds/vuelta_carta.wav');
 
     
   }
