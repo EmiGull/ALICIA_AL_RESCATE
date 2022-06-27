@@ -17,15 +17,13 @@ export class Winner extends Phaser.Scene {
         
         //sonido ganador
         
-    if (!win) {
+    if (! win) {
         win = this.sound.add('win',{ loop: false });
         win.play();
     }
-     
-    
         
         // Boton para volver a Menu principal
-        var menu = this.add.image(600, 100, 'boton_menu').setScale(1.1)
+        var menu = this.add.image(600, 1400, 'atras').setScale(1.1)
         menu.setInteractive()
         menu.on('pointerdown', () => this.scene.start('MainMenu'));
         this.clic.play();

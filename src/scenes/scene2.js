@@ -96,6 +96,7 @@ export class Scene2 extends Phaser.Scene {
       imagen.tipo = tipo
 
       //prueba del click
+      const scene = this;
       imagen.on('pointerdown', function (pointer) {
         console.log(this.tipo);
         tarjetasDestapadas++
@@ -127,7 +128,7 @@ export class Scene2 extends Phaser.Scene {
 
         //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
         if (coincidencias === 8){
-          this.scene.Winner ();
+          scene.winner ();
         }
 
       });

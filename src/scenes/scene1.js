@@ -28,7 +28,7 @@ export class Scene1 extends Phaser.Scene {
 
     //sonidos
     this.clic = this.sound.add('clic');
-    
+
     // Boton para volver al menu principal
     var menu = this.add.image(600, 100, 'boton_menu').setScale(1.1)
     menu.setInteractive()
@@ -41,7 +41,7 @@ export class Scene1 extends Phaser.Scene {
     this.timeText = this.add.text(340, 60, '10', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' });
     console.log(this.timedEvent)
 
-    
+
 
     let numeros4 = [1, 1, 2, 2]
     numeros4 = numeros4.sort(() => (Math.random() > .5) ? 1 : -1);
@@ -64,6 +64,7 @@ export class Scene1 extends Phaser.Scene {
       imagen.tipo = tipo
 
       //prueba del click
+      const scene = this;
       imagen.on('pointerdown', function (pointer) {
         console.log(this.tipo);
         tarjetasDestapadas++
@@ -94,16 +95,13 @@ export class Scene1 extends Phaser.Scene {
         }
 
         //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
-        if (coincidencias ===2){
-          this.scene.Winner ();
+        if (coincidencias === 2) {
+          scene.winner();
         }
-
-        //if (tarjetasDestapadas == 4){
-         // this.scene.start ('Winner');}});
-
-    });
-  })
-  }
+      }
+      );
+    })
+}
 
   update() {
     if (gameover) {
@@ -111,15 +109,15 @@ export class Scene1 extends Phaser.Scene {
     }
   }
 
-  gameover(){
+  gameover() {
     this.scene.start('GameOver');
   }
 
-  winner(){
+  winner() {
     this.scene.start('Winner');
   }
 
-  onSecond(){
+  onSecond() {
     if (!gameover) {
       this.initialTime = this.initialTime - 1; // One second
       this.timeText.setText(this.initialTime);
