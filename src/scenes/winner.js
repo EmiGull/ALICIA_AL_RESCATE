@@ -14,14 +14,13 @@ export class Winner extends Phaser.Scene {
 
         //clic
         this.clic = this.sound.add('clic');
-        
+
         //sonido ganador
-        
-    if (! win) {
-        win = this.sound.add('win',{ loop: false });
-        win.play();
-    }
-        
+        if (!win) {
+            win = this.sound.add('win', { loop: false });
+            win.play();
+        }
+
         // Boton para volver a Menu principal
         var menu = this.add.image(600, 1400, 'atras').setScale(0.26)
         menu.setInteractive()

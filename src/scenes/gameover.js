@@ -12,14 +12,14 @@ export class GameOver extends Phaser.Scene {
     // Fondo del menú principal
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "perdiste").setScale(1.1);
 
-     //clic
-     this.clic = this.sound.add('clic');
+    //clic
+    this.clic = this.sound.add('clic');
 
-     if (! derrota) {
-      derrota = this.sound.add('derrota',{ loop: false });
+    if (!derrota) {
+      derrota = this.sound.add('derrota', { loop: false });
       derrota.play();
-  }
-    
+    }
+
     // Boton para volver a Menu principal
     var menu = this.add.image(600, 1400, 'atras').setScale(0.26)
     menu.setInteractive()

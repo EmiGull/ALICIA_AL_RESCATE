@@ -10,8 +10,8 @@ export class Preloads extends Phaser.Scene {
   }
 
   preload() {
-    
-    this.load.image("menu","public/assets/images/menu.png");
+
+    this.load.image("menu", "public/assets/images/menu.png");
     this.load.image("jugar", "public/assets/images/jugar.png", 120, 40);
     this.load.image("mapa", "public/assets/images/mapa.png");
     this.load.image("boton_menu", "public/assets/images/boton_menu.png");
@@ -36,13 +36,11 @@ export class Preloads extends Phaser.Scene {
     this.load.image("torta", "public/assets/images/torta.png");
     this.load.image("ganaste", "public/assets/images/ganaste.png");
     this.load.image("perdiste", "public/assets/images/perdiste.png");
-    this.load.audio('alicia_al_rescate','public/assets/sounds/alicia_al_rescate.mp3', 
-    'public/assets/sounds/alicia_al_rescate.ogg', 'public/assets/sounds/alicia_al_rescate.m4a');
-    this.load.audio ('win', 'public/assets/sounds/win.mp3');
-    this.load.audio ('clic', 'public/assets/sounds/clic.wav');
-    this.load.audio ('derrota', 'public/assets/sounds/derrota.mp3');
-
-    
+    this.load.audio('alicia_al_rescate', 'public/assets/sounds/alicia_al_rescate.mp3',
+      'public/assets/sounds/alicia_al_rescate.ogg', 'public/assets/sounds/alicia_al_rescate.m4a');
+    this.load.audio('win', 'public/assets/sounds/win.mp3');
+    this.load.audio('clic', 'public/assets/sounds/clic.wav');
+    this.load.audio('derrota', 'public/assets/sounds/derrota.mp3');
   }
 
   create() {

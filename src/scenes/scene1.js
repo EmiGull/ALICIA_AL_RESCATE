@@ -30,12 +30,6 @@ export class Scene1 extends Phaser.Scene {
     //sonidos
     this.clic = this.sound.add('clic');
 
-    //agregar música
-    if (!musica) {
-      musica = this.sound.add('alicia_al_rescate',{ loop: true });
-      musica.stop();
-    }
-
     // Boton para volver al menu principal
     var menu = this.add.image(600, 100, 'boton_menu').setScale(1.1)
     menu.setInteractive()
@@ -108,7 +102,7 @@ export class Scene1 extends Phaser.Scene {
       }
       );
     })
-}
+  }
 
   update() {
     if (gameover) {

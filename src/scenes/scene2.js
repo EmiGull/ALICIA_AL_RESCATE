@@ -23,16 +23,10 @@ export class Scene2 extends Phaser.Scene {
     this.add.image(120, 100, 'puntos');
     var puntos = this.add.text(130, 60, '0', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' })
 
-     //clic
-     this.clic = this.sound.add('clic');
-    
-    //agregar música
-    if (!musica) {
-      musica = this.sound.add('alicia_al_rescate',{ loop: true });
-      musica.stop();
-    }
-    
-     // Boton para volver al menu principal
+    //clic
+    this.clic = this.sound.add('clic');
+
+    // Boton para volver al menu principal
     var menu = this.add.image(600, 100, "boton_menu").setScale(1.1);
     menu.setInteractive();
     menu.on("pointerdown", () => this.scene.start("MainMenu"));
@@ -43,8 +37,8 @@ export class Scene2 extends Phaser.Scene {
     this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onSecond, callbackScope: this, loop: true });
     this.timeText = this.add.text(340, 60, '40', { fontFamily: 'Rockwell', fontSize: 70, color: '#000000' });
 
-    
-    
+
+
     let numeros16 = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
     numeros16 = numeros16.sort(() => (Math.random() > 0.5 ? 1 : -1));
     console.log(numeros16);
@@ -134,8 +128,8 @@ export class Scene2 extends Phaser.Scene {
         };
 
         //Para ir a la pantalla de ganaste una vez que se dan vuelta todas las cartas
-        if (coincidencias === 8){
-          scene.winner ();
+        if (coincidencias === 8) {
+          scene.winner();
         }
 
       });
@@ -153,13 +147,13 @@ export class Scene2 extends Phaser.Scene {
     this.scene.start('GameOver')
   }
 
-  winner(){
+  winner() {
     this.scene.start('Winner');
   }
 
 
   onSecond() {
-      if (!gameover) {
+    if (!gameover) {
       this.initialTime = this.initialTime - 1; // One second
       this.timeText.setText(this.initialTime);
       if (this.initialTime == 0) {
