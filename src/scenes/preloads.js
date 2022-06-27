@@ -40,7 +40,7 @@ export class Preloads extends Phaser.Scene {
     'public/assets/sounds/alicia_al_rescate.ogg', 'public/assets/sounds/alicia_al_rescate.m4a');
     this.load.audio ('win', 'public/assets/sounds/win.mp3');
     this.load.audio ('clic', 'public/assets/sounds/clic.wav');
-    this.load.audio ('vuelta_carta', 'public/assets/sounds/vuelta_carta.wav');
+    this.load.audio ('derrota', 'public/assets/sounds/derrota.mp3');
 
     
   }

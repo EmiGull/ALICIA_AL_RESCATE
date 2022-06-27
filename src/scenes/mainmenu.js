@@ -17,7 +17,7 @@ export class MainMenu extends Phaser.Scene {
    
     //agregar música
     if (!musica) {
-      musica = this.sound.add('alicia_al_rescate',{ loop: false });
+      musica = this.sound.add('alicia_al_rescate',{ loop: true });
       musica.play();
     }
    
