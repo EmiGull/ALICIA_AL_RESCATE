@@ -6,6 +6,7 @@ let winner = false;
 let corazones = 0;
 let tarjetasDestapadas = 0;
 let coincidencias = 0;
+let musica = false;
 
 
 
@@ -28,6 +29,12 @@ export class Scene1 extends Phaser.Scene {
 
     //sonidos
     this.clic = this.sound.add('clic');
+
+    //agregar música
+    if (!musica) {
+      musica = this.sound.add('alicia_al_rescate',{ loop: true });
+      musica.stop();
+    }
 
     // Boton para volver al menu principal
     var menu = this.add.image(600, 100, 'boton_menu').setScale(1.1)
@@ -124,6 +131,15 @@ export class Scene1 extends Phaser.Scene {
       if (this.initialTime == 0) {
         this.timedEvent.paused = true;
         this.gameover()
+      }
+    }
+
+    if (!winner) {
+      this.initialTime = this.initialTime - 1; // One second
+      this.timeText.setText(this.initialTime);
+      if (this.initialTime == 0) {
+        this.timedEvent.paused = true;
+        this.winner()
       }
     }
   }
