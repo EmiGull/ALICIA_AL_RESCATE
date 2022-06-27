@@ -167,15 +167,6 @@ export class Scene2 extends Phaser.Scene {
         this.gameover()
       }
     }
-
-    if (!winner) {
-      this.initialTime = this.initialTime - 1; // One second
-      this.timeText.setText(this.initialTime);
-      if (this.initialTime == 0) {
-        this.timedEvent.paused = true;
-        this.winner()
-      }
-    }
   }
 }
 
