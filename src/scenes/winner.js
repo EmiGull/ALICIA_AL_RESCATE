@@ -23,7 +23,7 @@ export class Winner extends Phaser.Scene {
     }
         
         // Boton para volver a Menu principal
-        var menu = this.add.image(600, 1400, 'atras').setScale(1.1)
+        var menu = this.add.image(600, 1400, 'atras').setScale(0.26)
         menu.setInteractive()
         menu.on('pointerdown', () => this.scene.start('MainMenu'));
         this.clic.play();
