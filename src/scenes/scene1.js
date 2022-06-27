@@ -1,13 +1,6 @@
-//inicializacion de variables
-let tarjeta1 = null;
-let tarjeta2 = null;
+
 let gameover = false;
 let winner = false;
-let corazones = 0;
-let tarjetasDestapadas = 0;
-let coincidencias = 0;
-let musica = false;
-
 
 
 //import Button from "../js/button.js";
@@ -20,6 +13,14 @@ export class Scene1 extends Phaser.Scene {
   }
 
   create() {
+
+    //inicializacion de variables
+    let tarjeta1 = null;
+    let tarjeta2 = null;
+    let corazones = 0;
+    let tarjetasDestapadas = 0;
+    let coincidencias = 0;
+    
 
     // Fondo del nivel 1
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "fondonivel1").setScale(1.1);

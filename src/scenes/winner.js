@@ -1,5 +1,5 @@
 import Button from "../js/button.js";
-let win = false;
+
 
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
 export class Winner extends Phaser.Scene {
@@ -9,6 +9,8 @@ export class Winner extends Phaser.Scene {
     }
 
     create() {
+        let win = false;
+
         // Fondo del menú principal
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "ganaste").setScale(1.1);
 

@@ -1,11 +1,5 @@
-//inicializacion de variables
-let tarjeta1 = null;
-let tarjeta2 = null;
 let gameover = false;
-let corazones = 0;
-let tarjetasDestapadas = 0;
-let coincidencias = 0;
-let musica = false;
+
 
 
 // Clase MainMenu, donde se crean los botones, el logo y el fondo del menú principal
@@ -17,6 +11,13 @@ export class Scene2 extends Phaser.Scene {
 
 
   create() {
+    //inicializacion de variables
+    let tarjeta1 = null;
+    let tarjeta2 = null;
+    let corazones = 0;
+    let tarjetasDestapadas = 0;
+    let coincidencias = 0;
+    
     // Fondo del nivel 2
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "fondonivel2").setScale(1.1);
     this.add.image(400, 100, 'temporizador');
